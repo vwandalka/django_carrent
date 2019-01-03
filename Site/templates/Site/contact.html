@@ -1,0 +1,35 @@
+{% if cf %}
+<h4>Próba wysyłania</h4>
+{% endif %}
+
+
+
+<form method="POST" action="{% url 'contact_page' %}" >
+
+    {% csrf_token %}
+
+    <div class="row">
+        <label for="cf_name">Imię:</label>
+        <input id="cf_name" name="cf_name" type="text" placeholder="Imię">
+    </div>
+
+    <div class="row">
+        <label for="cf_email">Email:</label>
+        <input id="cf_email" name="cf_email" type="email" placeholder="Email">
+    </div>
+
+    <div class="row">
+        <label for="cf_subject">Temat:</label>
+        <input id="cf_subject" name="cf_subject" type="text" placeholder="Temat">
+    </div>
+
+    <div class="row">
+        <label for="cf_message">Treść:</label>
+        <textarea id="cf_message" name="cf_message" placeholder="Treść"></textarea>
+    </div>
+
+    <div class="row submit">
+        <button type="submit" name="cf_send">Wyślij</button>
+    </div>
+
+</form>

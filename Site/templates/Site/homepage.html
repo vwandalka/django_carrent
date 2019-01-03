@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     {% load static %}
+    <meta charset="UTF-8">
+    <title>{{ message }}</title>
+</head>
+
+<main>
+
+<h1>{{ page.title }}</h1>
+    <div class="content">{{ page.content }}</div>
+    <h2>Menu: </h2>
+
+    <ul>
+    {% for m in menu %}
+        <li>{{ m }}</li>
+    {% endfor %}
+
+<!--<li>{{ menu.0 }}</li>-->
+<!--<li>{{ menu.1 }}</li>-->
+</ul>
+
+</main>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet"  type="text/css" href="{% static 'Rental/style.css' %}"/>
+    <script src="{% static 'Rental/app.js' %}"></script>
+    <meta charset="UTF-8">
+    <title>Cars List</title>
+</head>
+<body>
+
+<!--<h1>{{ message }}</h1>-->
+
+<!--{% for fura in fury %}-->
+    <!--<li>-->
+        <!--<a href="/rentalsystems/carslist/{{ fura.id }}">{{ fura.mark }}</a>-->
+    <!--</li>-->
+    <!--&lt;!&ndash;<h2 {% if fura.mark == 'Porsche' %}style="color: red"{% endif %}>{{ fura.mark }}</h2>&ndash;&gt;-->
+    <!--{% endfor %}-->
+
+{% if search %}
+<h1>Wyniki wyszukiwania</h1>
+{% else %}
+<h1>{{ title }}</h1>
+{% endif %}
+
+
+{% if not cars %}
+<p class="empty">Brak resultatów</p>
+{% else %}
+<ul>
+    {% for car in cars %}
+    <li>
+        <a href="{% url 'caritem' car.id %}">{{ car.mark }} {{ car.model }}</a>
+    </li>
+    {% endfor %}
+{% endif %}
+</ul>
+
+<h2>Wyszukaj</h2>
+<form method="GET" action="{% url 'carslist' %}">
+    <label>Marka: </label>
+    <input type="text" name="carmark" /><br/>
+    <label>Rocznik: </label>
+    <input type="text" name="caryear" /><br/>
+    <input type="hidden" name="search" value="true" />
+    <input type="submit" value="szukaj" />
+</form>
+</body>
+</html>
